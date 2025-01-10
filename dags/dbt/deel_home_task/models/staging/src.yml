@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+    - name: raw
+      database: deel
+      tables:
+        - name: raw_organizations
+          description: Detailed information about each organization, contractual activities and operational timeline
+          columns:
+            - name: organization_id
+              tests:
+                - unique
+                - not_null
+        - name: raw_invoices
+          description: Financial transactions for each organization, payment methods and currencies
+          columns:
+            - name: invoice_id
+              tests:
+                - unique
+                - not_null
+
+            - name: organization_id
+              tests:
+                - not_null
+
+            - name: currency
+              tests:
+                - not_null
+
+            - name: amount
+              tests:
+                - not_null
+
+            - name: fx_rate
+              tests:
+                - not_null
