@@ -30,7 +30,7 @@ profile_config = ProfileConfig(
     target_name="prod",
     profile_mapping=SnowflakeUserPasswordProfileMapping(
         conn_id="snowflake_conn", 
-        profile_args={"database": "deel", "schema": "raw"},
+        profile_args={"database": "raw", "schema": "data"},
     )
 )
 

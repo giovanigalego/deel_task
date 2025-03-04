@@ -1,5 +1,5 @@
 with organizations as (
-    select * from {{ source('raw', 'raw_organizations') }}
+    select * from {{ source('raw', 'organizations') }}
 )
 
 select

@@ -14,12 +14,13 @@ snowflake_schema = 'raw'
 
 # Email configuration
 sender_email = 'giovanigalego96@gmail.com'
-sender_password = 'wxqd avjl xfkp elzd'
+sender_password = os.getenv('EMAIL_SENDER_PASSWORD')
+# 'wxqd avjl xfkp elzd'
 receiver_email = ['giovanigalego96@gmail.com', 'giovani-gsh@hotmail.com']
 subject = "Snowflake Query Results"
 
 # Query Snowflake table
-query = "SELECT * FROM deel.trusted.stg_organizations LIMIT 10;"  # Adjust query as needed
+query = "select * from analytics.refined.fact_financials where invoice_created_at >= '2024-04-24' and send_alert = 1"  # Adjust query as needed
 
 try:
     # Connect to Snowflake

@@ -1,5 +1,5 @@
 with invoices as (
-    select * from {{ source('raw', 'raw_invoices') }}
+    select * from {{ source('raw', 'invoices') }}
 )
 
 select
@@ -16,4 +16,5 @@ select
     ,PAYMENT_AMOUNT
     ,FX_RATE
     ,FX_RATE_PAYMENT
+    ,CREATED_AT
 from invoices
