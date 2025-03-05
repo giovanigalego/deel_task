@@ -1,5 +1,3 @@
-
-
 with orgs_in_invoice as (
     select
         organization_id
