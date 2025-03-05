@@ -77,3 +77,9 @@ In this repository, you will find the solution to my task proposed by Deel. The 
 
   ![snowflake_report_procedure_email](https://github.com/user-attachments/assets/42def0c2-f336-4a87-bcea-75024fe484b9)
 
+
+📊 Data Observability
+  - To ensure the data reliability, monitoring, I'm using [Elementary](https://www.elementary-data.com/) package.
+  - Here is the Elementary [Documentation](https://docs.elementary-data.com/introduction) as well.
+
+  ![elementary_structure](https://github.com/user-attachments/assets/573fda91-1178-4124-8827-5f79ce6e82d5)
