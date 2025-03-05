@@ -3,12 +3,12 @@ with normalized as (
         inv.organization_id
         ,created_at::date as invoice_created_at
         ,case
-            when status not in ('failed','unpayable','cancelled','skipped','processing') 
+            when status not in ('FAILED','UNPAYABLE','CANCELLED','SKIPPED','PROCESSING')
             then (amount*fx_rate)::decimal(15,2)
             else 0
         end as invoice_amount
         ,case
-            when status = 'paid'
+            when status = 'PAID'
             then (payment_amount*fx_rate_payment)::decimal(15,2)
             else 0
         end as usd_payment
