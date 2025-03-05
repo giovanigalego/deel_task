@@ -21,3 +21,22 @@ In this repository, you will find the solution to my task proposed by Deel. The 
   - stg_invoices and stg_organizations are materialized as <b>table</b> to be able to share with the Reader Account.
   - The function that can be called anytime to send email, it's a procedure in the main Snowflake account.
   - Snowflake email procedure code it's in the file: <b>snowflake_script/email_alert_procure.py</b> (This code only works in Snowflake because use the Snowflake Mailing System)
+
+
+
+💡 Explanation Fact_Financial
+  - How to achieve the 50% balance difference over day and consider only new days. I assume that there was some invoice status to be disregarded so I changed it's value to 0 and normalized the data record.![cte_normalized](https://github.com/user-attachments/assets/695b4ae0-cfda-4fc2-949a-4e08f0ca5e0b)
+  - After that I made the Balance calculation following the logic: Balance = Total Amount - Invoice Amount.![cte_balance](https://github.com/user-attachments/assets/da9f7ad5-cc3e-4ca0-8949-f033fcbb6cd6)
+  - To finish I calculated the last day balance, to divide this value by the current day and created the "send_alert" column to be easier on the email alert.![fact_last_block](https://github.com/user-attachments/assets/befce470-8dc9-47cb-913a-9a908c0636bc)
+
+
+
+💡 Explanation Dim_Organizations
+  - I realized that there were more Organizations_ID in the <b>invoice</b> table than the <b>organization</b> table (approximately 11k).
+  - To fix this difference I did the following steps.
+  - I created the first CTE to return the first day for each organization (this information will be necessary in the end).![cte_orgs_invoice](https://github.com/user-attachments/assets/2378af94-b8f5-4647-8a00-6af739057c02)
+  - The next CTE it's <b>payments_dates</b>, I realized that the <b>first_day_payment</b> it's the first invoice with <b>PAID</b> status, so I queried this information.![cte_payment_dates](https://github.com/user-attachments/assets/b7036305-dc92-4dcb-a9ee-c94851f70b7d)
+  - The <b>orgs_current_balace</b> returns an information to enhance the Dim_Organizations, it returns the current balance for each organization.![cte_org_cur_balance](https://github.com/user-attachments/assets/bb72562c-75d3-4f9a-a787-07811433b0d0)
+  - The final block I used left join to not lose any data and use the <b>created_at</b> column queried in the first CTE, to populate the same column at my Dim_Organization.![dim_org_final_block](https://github.com/user-attachments/assets/595e4011-75d4-4b2e-b4de-a929472fcefc)
+
+
