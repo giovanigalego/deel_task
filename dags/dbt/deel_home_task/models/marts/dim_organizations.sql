@@ -1,3 +1,5 @@
+
+
 with orgs_in_invoice as (
     select
         organization_id
@@ -13,7 +15,7 @@ with orgs_in_invoice as (
         ,min(created_at) as first_payment_date
         ,max(created_at) as last_payment_date
     from {{ ref('stg_invoices') }}
-    where status = 'paid'
+    where status = 'PAID'
     group by all
 )
 
@@ -34,6 +36,7 @@ select
     ,org.count_total_contracts_active
     ,cur_balance.current_balance
     ,ifnull(org.created_date,orgs_invoice.created_at) as created_date
+    ,current_timestamp() as updated_at
 from orgs_in_invoice as orgs_invoice
 left join payments_dates as pay_dates using(organization_id)
 left join {{ ref('stg_organizations') }} as org using(organization_id)

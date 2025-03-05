@@ -29,15 +29,22 @@ clean-targets:         # directories to be removed by `dbt clean`
 # In this example config, we tell dbt to build all models in the example/
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
+
+vars:
+  elementary_full_refresh: true
+
 models:
   deel_home_task:
-    # Config indicated by + and applies to all files under models/example/
-    +schema: "{{target.schema if target.name == 'dev' else 'TRUSTED'}}"
+
+  elementary:
+    +schema: "{{target.schema if target.name == 'dev' else 'ELEMENTARY'}}"
+    
     staging:
+      +schema: "{{target.schema if target.name == 'dev' else 'TRUSTED'}}"
       +tags: staging
       +query_tag: staging
       +copy_grants: true
-      +materialized: view
+      +materialized: table
     
     marts:
       +schema: "{{target.schema if target.name == 'dev' else 'REFINED'}}"
