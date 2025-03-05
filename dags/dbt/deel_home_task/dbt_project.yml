@@ -31,14 +31,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 
 vars:
-  elementary_full_refresh: true
+  elementary_full_refresh: false
 
 models:
   deel_home_task:
-
-  elementary:
-    +schema: "{{target.schema if target.name == 'dev' else 'ELEMENTARY'}}"
-    
+  
     staging:
       +schema: "{{target.schema if target.name == 'dev' else 'TRUSTED'}}"
       +tags: staging
