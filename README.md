@@ -12,7 +12,7 @@ In this repository, you will find the solution to my task proposed by Deel. The 
 - dbt-core
 
 📂 Detailed Project Structure
-- At folder dags/dbt/deel_home_task/ it will find the dbt project with the task solution will be found, also incorporating best practices with dbt, a connection to Snowflake, and the structure of a data pipeline.
+- At folder dags/dbt/deel_home_task/ you will find the dbt project with the task solution, also incorporating best practices with dbt, a connection to Snowflake, and the structure of a data pipeline.
 - At folder dags/scripts, our dag will be responsible for scheduling our data pipeline daily.
 
 🔍 Observations
