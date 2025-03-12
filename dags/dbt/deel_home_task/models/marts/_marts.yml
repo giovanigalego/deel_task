@@ -7,7 +7,7 @@ models:
       - name: organization_id
         tests:
           - not_null
-          
+
       - name: send_alert
         tests:
           - not_null
@@ -26,4 +26,3 @@ models:
       - name: last_payment_date
         tests:
           - not_null
-                        
