@@ -17,7 +17,7 @@ profile_config = ProfileConfig(
     target_name="prod",
     profile_mapping=SnowflakeUserPasswordProfileMapping(
         conn_id="snowflake_conn", 
-        profile_args={"database": "analytics", "schema": "trusted"},
+        profile_args={"database": "analytics", "schema": "elementary"},
     )
 )
 

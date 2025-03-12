@@ -2,3 +2,28 @@ version: 2
 
 models:
   - name: fact_financials
+    description: Information about the current balance of each organization
+    columns:
+      - name: organization_id
+        tests:
+          - not_null
+          
+      - name: send_alert
+        tests:
+          - not_null
+  - name: dim_organizations
+    description: Information about each organization
+    columns:
+      - name: organization_id
+        tests:
+          - not_null
+          - unique
+
+      - name: first_payment_date
+        tests:
+          - not_null
+
+      - name: last_payment_date
+        tests:
+          - not_null
+                        

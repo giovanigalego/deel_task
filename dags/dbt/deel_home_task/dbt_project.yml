@@ -31,7 +31,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 
 vars:
-  elementary_full_refresh: false
+  elementary_full_refresh: true
 
 models:
   deel_home_task:
